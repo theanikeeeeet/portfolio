@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useRef } from "react";
 
 export function Hero() {
@@ -7,11 +7,11 @@ export function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  const reveal = {
+  const reveal: Variants = {
     hidden: { y: "110%" },
     show: (i: number) => ({
       y: 0,
-      transition: { delay: 1.6 + i * 0.08, duration: 1.05, ease: [0.2, 0.8, 0.2, 1] },
+      transition: { delay: 1.6 + i * 0.08, duration: 1.05, ease: [0.2, 0.8, 0.2, 1] as const },
     }),
   };
 
