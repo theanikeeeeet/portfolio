@@ -56,4 +56,4 @@ export const Route = createFileRoute("/api/video/$id")({
       HEAD: handle,
     },
   },
-});
+} as any);
