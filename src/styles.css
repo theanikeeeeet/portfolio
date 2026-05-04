@@ -4,6 +4,82 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Cinematic editorial portfolio — Aniket Raj */
+@layer base {
+  html, body {
+    font-family: "Inter Tight", "Inter", system-ui, -apple-system, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .font-display {
+    font-family: "Instrument Serif", "Times New Roman", serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .font-mono-meta {
+    font-family: ui-monospace, "JetBrains Mono", "Geist Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+/* Grain overlay */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
+
+/* Magnetic cursor dot */
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: var(--accent-orange);
+  pointer-events: none;
+  z-index: 200;
+  mix-blend-mode: difference;
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.25s, height 0.25s;
+  transform: translate(-50%, -50%);
+}
+
+/* Scribble underline */
+.scribble {
+  position: relative;
+  display: inline-block;
+}
+.scribble::after {
+  content: "";
+  position: absolute;
+  left: -4%;
+  bottom: -0.15em;
+  width: 108%;
+  height: 0.35em;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 12' xmlns='http://www.w3.org/2000/svg' fill='none'%3E%3Cpath d='M2 8 Q40 2 80 6 T160 5 T198 7' stroke='%23ff5b1f' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.hover-img-zoom img { transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.hover-img-zoom:hover img { transform: scale(1.06); }
+
+::selection { background: var(--accent-orange); color: #fff; }
+
 /*
  * Design system definition.
  *
@@ -63,14 +139,18 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --background: oklch(0.985 0.005 80);
+  --foreground: oklch(0.16 0.01 60);
+  --accent-orange: #ff5b1f;
+  --accent-orange-soft: #ffe7d8;
+  --warm-paper: oklch(0.97 0.012 70);
+  --hairline: oklch(0.88 0.01 60);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.68 0.20 40);
+  --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
@@ -79,7 +159,7 @@
   --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
+  --border: oklch(0.9 0.01 70);
   --input: oklch(0.929 0.013 255.508);
   --ring: oklch(0.704 0.04 256.788);
   --chart-1: oklch(0.646 0.222 41.116);
