@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 
 export function Nav() {
   const links = [
-    { label: "Work", href: "#work" },
-    { label: "About", href: "#about" },
+    { label: "Events", href: "#events" },
+    { label: "Editing", href: "#work" },
+    { label: "Motion", href: "#motion" },
     { label: "Photo", href: "#photo" },
     { label: "Contact", href: "#contact" },
   ];
