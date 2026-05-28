@@ -25,11 +25,16 @@ export function Experience() {
               className="w-[78vw] md:w-[28vw] shrink-0"
             >
               <VideoTile video={it} index={i} aspectClass="aspect-[4/5]" />
-              <div className="mt-4 flex items-baseline justify-between">
-                <div className="font-mono-meta text-foreground/60">{it.year}</div>
-                <div className="font-mono-meta text-foreground/60 text-right max-w-[20ch]">
-                  {it.caption}
-                </div>
+              <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1 font-mono-meta text-foreground/60">
+                <span className="text-foreground/45">Client</span>
+                <span className="text-right text-foreground">{it.client}</span>
+                <span className="text-foreground/45">Role</span>
+                <span className="text-right">{it.role}</span>
+                <span className="text-foreground/45">Views</span>
+                <span className="text-right inline-flex items-center justify-end gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--accent-orange)" }} />
+                  {it.views}
+                </span>
               </div>
             </motion.div>
           ))}
