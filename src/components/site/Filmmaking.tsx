@@ -44,6 +44,13 @@ export function Filmmaking() {
             }
           >
             <VideoTile video={video} index={i} aspectClass="aspect-[9/16]" />
+            <div className="mt-3 flex items-center justify-between font-mono-meta text-foreground/60">
+              <span className="truncate">{video.client}</span>
+              <span className="inline-flex items-center gap-2 shrink-0">
+                <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--accent-orange)" }} />
+                {video.views}
+              </span>
+            </div>
           </div>
         ))}
       </div>
